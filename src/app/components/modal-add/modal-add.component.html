@@ -1,0 +1,16 @@
+<div class="modal">
+  <div class="titulo">
+    <h1>ADICIONAR</h1>
+  </div>
+
+  <div class="inputs">
+    <input type="text" [(ngModel)]="descricao" name="descricao" id="descricao" placeholder="Descrição">
+    <input type="number" [(ngModel)]="valor" name="valor" id="valor" placeholder="Valor">
+  </div>
+
+  <div class="buttons">
+    <button id="cancelar" (click)="cancelar()">Cancelar</button>
+    <button id="saida" (click)="saida()">Saida</button>
+    <button id="entrada" (click)="entrada()">Entrada</button>
+  </div>
+</div>

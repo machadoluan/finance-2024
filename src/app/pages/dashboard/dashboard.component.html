@@ -1,0 +1,103 @@
+<div class="dashboard">
+  <div class="slidebar">
+    <div class="logo">
+      <img src="../../../assets/logo.png" alt="">
+    </div>
+    <div class="options">
+      <div class="select home">
+        <img src="../../../assets/Dashboard-Layout.svg" class="icon" alt="">
+      </div>
+      <div class="select add" (click)="button()">
+        <img src="../../../assets/Add.svg" class="icon" alt="">
+
+      </div>
+      <div class="select config">
+        <img src="../../../assets/config.svg" class="icon" alt="">
+
+      </div>
+    </div>
+    <div class="select sair" (click)="logout()" title="sair">
+      <img src="../../../assets/Logout.svg" class="icon" alt="">
+
+    </div>
+  </div>
+
+  <main>
+    <div class="header">
+      <div class="titulo">
+        <h1>Olá, nome</h1>
+      </div>
+
+      <div class="dark-mode">
+        <img src="../../../assets/sun.png" alt="">
+      </div>
+
+    </div>
+
+    <div class="status">
+      <div class="entrada">
+        <h1>Entrada</h1>
+        <img src="../../../assets/arrow-entrada.svg" class="type-icon" alt="">
+        <h2>R$ 00,00</h2>
+      </div>
+      <div class="saidas">
+        <h1>Saída</h1>
+        <img src="../../../assets/arrow-saidas.svg" class="type-icon" alt="">
+        <h2>R$ 00,00</h2>
+      </div>
+      <div class="total">
+        <h1>Total</h1>
+        <h2>R$ 00,00</h2>
+      </div>
+    </div>
+
+    <div class="descricao">
+
+      <div class="content">
+        <div class="filtro">
+          <div class="all">s</div>
+          <div class="f_entradas">s</div>
+          <div class="f_saidas">s</div>
+        </div>
+        <div class="title-desc">
+          <div class="desc">
+            <h1>Descrição</h1>
+          </div>
+          <div class="valor">
+            <h1 id="valor">Valor</h1>
+          </div>
+          <div class="tipo">
+            <h1>Tipo</h1>
+          </div>
+        </div>
+
+
+        <div *ngFor="let entrada of sharedDataService.entradas" class="value-desc">
+          <div class="desc">
+            <h1>{{ entrada.descricao }}</h1>
+          </div>
+          <div class="valor">
+            <h1>R$: {{ entrada.valor }}</h1>
+          </div>
+          <div class="tipo">
+            <img *ngIf="entrada.tipo === 'Entrada'" src="../../../assets/arrow-entrada.svg" style="width: 30px;" alt="">
+            <img *ngIf="entrada.tipo === 'Saida'" src="../../../assets/arrow-saidas.svg" style="width: 30px;" alt="">
+          </div>
+        </div>
+
+        <div *ngFor="let saida of sharedDataService.saidas" class="value-desc">
+          <div class="desc">
+            <h1>{{ saida.descricao }}</h1>
+          </div>
+          <div class="valor">
+            <h1>R$: {{ saida.valor }}</h1>
+          </div>
+          <div class="tipo">
+            <img *ngIf="saida.tipo === 'Entrada'" src="../../../assets/arrow-entrada.svg" style="width: 30px;" alt="">
+            <img *ngIf="saida.tipo === 'Saida'" src="../../../assets/arrow-saidas.svg" style="width: 30px;" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

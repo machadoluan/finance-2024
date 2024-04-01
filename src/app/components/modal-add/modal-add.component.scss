@@ -1,0 +1,105 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50%; /* Você pode ajustar este valor conforme necessário */
+  height: 50%; /* Você pode ajustar este valor conforme necessário */
+  background-color: #19161F;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+
+  .titulo{
+    display: flex;
+    justify-content: center;
+    color: #ffffff;
+    padding-top: 30px;
+  }
+
+  .inputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+
+    gap: 1.5rem;
+
+    input{
+      width: 40%;
+      padding: 10px;
+      background-color: transparent;
+      border: 2px solid white;
+      border-radius: 10px;
+      color: white;
+      font-size: 14px;
+    }
+
+    #valor{
+      width: 25%;
+    }
+
+    select {
+      /* Estilos gerais do select */
+      width: 29%;
+      font-size: 14px;
+      padding: 10px;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      background-color: #342F3E;
+      /* Adicione outros estilos conforme necessário */
+
+
+       option {
+        /* Estilos das opções suspensas */
+        color: #000000;
+        /* Adicione outros estilos conforme necessário */
+      }
+    }
+  }
+
+  .buttons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    gap: 2rem;
+
+    button{
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    #cancelar{
+      background-color: red;
+      transition: all 0.5s ease-in-out;
+
+
+      &:hover{
+        background-color: rgba(255, 0, 0, 0.473);
+      }
+    }
+    #entrada{
+      background-color: #62ff009f;
+      transition: all 0.5s ease-in-out;
+
+
+      &:hover{
+        background-color: rgba(98, 255, 0, 0.295);
+      }
+    }
+
+    #saida{
+      background-color: #ffd9009f;
+      transition: all 0.5s ease-in-out;
+
+
+      &:hover{
+        background-color: rgba(255, 217, 0, 0.315);
+      }
+    }
+  }
+}

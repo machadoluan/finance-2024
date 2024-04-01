@@ -1,0 +1,131 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Righteous&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+
+  .login {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    margin: 0 auto;
+
+    h1 {
+      font-family: Righteous;
+      color: rgba($color: #000000, $alpha: 0.75);
+      width: 345px;
+      font-size: 36px;
+    }
+  }
+
+  .inputs {
+    margin-top: 50px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+      font-family: Lexend;
+
+      .config-input {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        text-align: start;
+      }
+
+      input {
+        width: 400px;
+        padding: 15px 10px;
+        border: 2px solid #000;
+        border-radius: 10px;
+        margin: 10px 0;
+      }
+
+      button {
+        padding: 13px 70px;
+        background-color: rgb(41, 87, 164);
+        color: white;
+        font-size: 20px;
+        border: none;
+        border-radius: 9px;
+        cursor: pointer;
+        margin-top: 25px;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          background-color: rgba(41, 86, 164, 0.8);
+        }
+      }
+    }
+  }
+
+  .logo {
+    width: 50%;
+    background-color: #D9D9D9;
+    border-radius: 15px 0 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  .error-invalid{
+    font-size: 14px;
+    color: red;
+    margin-top: 20px;
+  }
+
+  .text-danger{
+    font-size: 14px;
+    color: red;
+    padding-bottom: 10px;
+  }
+  .error-input{
+    font-size: 14px;
+    color: red;
+    padding-bottom: 10px;
+  }
+
+  .disabled{
+    opacity: 0.6;
+  }
+
+  @media screen and (max-width: 1080px) {
+    .logo{
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 442px) {
+    .inputs form input{
+      width: 350px;
+    }
+  }
+
+  @media screen and (max-width: 372px) {
+    h1{
+      text-align: center;
+    }
+    .inputs form input{
+      width: 250px;
+    }
+  }
+}
