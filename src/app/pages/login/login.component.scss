@@ -1,6 +1,5 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Righteous&display=swap');
+
 
 * {
   margin: 0;
@@ -21,7 +20,7 @@
     margin: 0 auto;
 
     h1 {
-      font-family: Righteous;
+      font-family: sans-serif;
       color: rgba($color: #000000, $alpha: 0.75);
       width: 345px;
       font-size: 36px;
@@ -36,7 +35,7 @@
       flex-direction: column;
       align-items: center;
       margin-top: 50px;
-      font-family: Lexend;
+      font-family: sans-serif;
 
       .config-input {
         display: flex;

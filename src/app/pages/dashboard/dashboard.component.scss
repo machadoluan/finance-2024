@@ -1,5 +1,4 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Righteous&display=swap');
 
 :root {
   --color-dark: #19161F;
@@ -66,7 +65,7 @@
   }
 
   .titulo h1{
-    font-family: Lexend;
+    font-family: sans-serif;
     color: #fff;
     font-size: 26px;
   }
@@ -93,7 +92,7 @@
       height: 170px;
       background-color: #342F3E;
       border-radius: 10px;
-      font-family: Lexend;
+      font-family: sans-serif;
       color: #fff;
       text-align: center;
       display: flex;
@@ -150,7 +149,7 @@
         align-items: center; /* Center items vertically */
         padding: 20px 100px;
         color: #fff;
-        font-family: Lexend;
+        font-family: sans-serif;
         text-align: center;
 
         #valor{
@@ -169,7 +168,7 @@
         background-color: #342f3e;
         padding: 10px;
         border-radius: 10px;
-        font-family: Lexend;
+        font-family: sans-serif;
         color: #fff;
       }
     }
