@@ -1,0 +1,157 @@
+<div class="configuracao">
+  <div class="slidebar">
+    <div class="logo">
+      <img src="../../../assets/logo.png" alt="">
+    </div>
+    <div class="options">
+      <div class="select home" (click)="home()">
+        <img src="../../../assets/Dashboard-Layout.svg" class="icon" alt="">
+        <span class="dessc">Home</span>
+      </div>
+      <div class="select add" (click)="button()">
+        <img src="../../../assets/Add.svg" class="icon" alt="">
+        <span class="dessc">Adicionar</span>
+      </div>
+      <div class="select config">
+        <img src="../../../assets/config.svg" class="icon" alt="">
+        <span class="dessc">Configurações</span>
+      </div>
+    </div>
+    <div class="select sair" (click)="logout()" title="sair">
+      <img src="../../../assets/Logout.svg" class="icon" alt="">
+      <span class="dessc">Sair</span>
+    </div>
+  </div>
+
+  <main>
+    <div class="header">
+      <div class="titulo">
+        <h1>Configurações</h1>
+      </div>
+
+      <div class="dark-mode">
+        <img src="../../../assets/sun.png" alt="">
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="card perfis" [class.expanded]="expanded === 'perfis'">
+        <div class="title" (click)="toggleExpansion('perfis')">
+          <div class="title-card">
+            <img src="../../../assets/user.svg" alt="">
+            <span>Gerenciar Usuarios</span>
+          </div>
+          <img src="../../../assets/arrow-drop-down-line.svg" class="icon down" alt="">
+          <img src="../../../assets/arrow-up-s-line.svg" class="icon up" alt="">
+        </div>
+        <div class="additional-info">
+          <div class="perfil">
+            <div class="dados">
+              <span>Nome: Luan</span>
+              <span>email: luanmachadodaas.com</span>
+              <span>senha: 1234</span>
+              <span>Data: 04/04/2006</span>
+              <div class="buttons">
+                <img src="../../../assets/edit.svg" alt="">
+                <img src="../../../assets/delete.svg" alt="">
+              </div>
+            </div>
+            <div class="dados">
+              <span>Nome: Luan</span>
+              <span>email: luanmachadodaas.com</span>
+              <span>senha: 1234</span>
+              <span>Data: 04/04/2006</span>
+              <div class="buttons">
+                <img src="../../../assets/edit.svg" alt="">
+                <img src="../../../assets/delete.svg" alt="">
+              </div>
+            </div>
+            <div class="dados">
+              <span>Nome: Luan</span>
+              <span>email: luanmachadodaas.com</span>
+              <span>senha: 1234</span>
+              <span>Data: 04/04/2006</span>
+              <div class="buttons">
+                <img src="../../../assets/edit.svg" alt="">
+                <img src="../../../assets/delete.svg" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card entrada" [class.expanded]="expanded === 'entrada'" >
+        <div class="title" (click)="toggleExpansion('entrada')">
+          <div class="title-card">
+            <img src="../../../assets/arrow-entrada.svg" alt="">
+            <span>Gerenciar entradas</span>
+          </div>
+          <img src="../../../assets/arrow-drop-down-line.svg" class="icon down" alt="">
+          <img src="../../../assets/arrow-up-s-line.svg" class="icon up" alt="">
+        </div>
+        <div class="additional-info">
+          <div class="content-inform">
+            <div *ngFor="let entrada of sharedDataService.entradas" class="value-desc">
+              <div class="desc">
+                <h1>{{ entrada.descricao }}</h1>
+              </div>
+              <div class="valor">
+                <h1>{{ formatarParaReal(entrada.valor) }}</h1>
+              </div>
+              <div class="buttons">
+                <img src="../../../assets/edit.svg" alt="">
+                <img src="../../../assets/delete.svg" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card saidas" [class.expanded]="expanded === 'saidas'" (click)="toggleExpansion('saidas')">
+        <div class="title">
+          <div class="title-card">
+            <img src="../../../assets/arrow-saidas.svg" alt="">
+            <span>Gerenciar saídas</span>
+          </div>
+          <img src="../../../assets/arrow-drop-down-line.svg" class="icon down" alt="">
+          <img src="../../../assets/arrow-up-s-line.svg" class="icon up" alt="">
+        </div>
+        <div class="additional-info">
+          <div class="content-inform">
+            <div *ngFor="let saida of sharedDataService.saidas" class="value-desc">
+              <div class="desc">
+                <h1>{{ saida.descricao }}</h1>
+              </div>
+              <div class="valor">
+                <h1>{{ formatarParaReal(saida.valor) }}</h1>
+              </div>
+              <div class="buttons">
+              <img src="../../../assets/edit.svg" alt="">
+              <img src="../../../assets/delete.svg" alt="">
+            </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="card baixar" [class.expanded]="expanded === 'baixar'" (click)="toggleExpansion('baixar')">
+        <div class="title">
+          <div class="title-card">
+            <img src="../../../assets/download.svg" alt="">
+            <span>Baixar</span>
+          </div>
+          <img src="../../../assets/arrow-drop-down-line.svg" class="icon down" alt="">
+          <img src="../../../assets/arrow-up-s-line.svg" class="icon up" alt="">
+        </div>
+        <div class="additional-info">
+          EM BREVE!!!
+        </div>
+      </div>
+
+    </div>
+
+
+  </main>
+
+</div>

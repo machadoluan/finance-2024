@@ -14,7 +14,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ModalAddComponent implements OnInit {
   descricao: string = '';
-  valor: number = 0;
+  valor: number
+
+  ;
   tipo: string = 'Entrada';
 
   constructor(

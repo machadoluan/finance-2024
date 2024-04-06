@@ -22,10 +22,11 @@
   align-items: center;
   justify-content: space-between;
   padding: 15px;
+  transition: all 500ms ease-in-out;
 }
 
 .slidebar:hover {
-  width: 20%;
+  width: 17%;
 }
 
 .logo img {
@@ -135,60 +136,62 @@ h2 {
   width: 40px;
 }
 
-.descricao {
+.descricao{
   width: 100%;
   padding: 20px 50px;
-}
 
-.content {
-  width: 100%;
-  height: 400px;
-  background-color: rgba(38, 34, 46, 1.0);
-  border-radius: 10px;
-  overflow-y: scroll;
-}
-
-@media screen and (max-height: 650px) {
-  .content {
-    height: 300px;
+  .filtro{
+    width: 100px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
   }
-}
 
-.content::-webkit-scrollbar {
-  width: 10px;
-}
 
-.content::-webkit-scrollbar-thumb {
-  background-color: #4a4a4a;
-  border-radius: 5px;
-}
+  .content {
+    width: 100%;
+    height: 400px;
+    background-color: rgba($color: #26222E, $alpha: 1.0);
+    border-radius: 10px;
+    overflow-y: scroll;
 
-.title-desc,
-.value-desc {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 100px;
-  color: #fff;
-  font-family: sans-serif;
-  text-align: center;
-}
-.title-desc h1{
-  font-size: 16px;
-}
-#valor {
-  padding-right: 30px;
-}
+    &::-webkit-scrollbar {
+      width: 10px; /* Largura da barra de rolagem */
+    }
 
-.value-desc {
-  margin: 10px 90px;
-  background-color: #342f3e;
-  padding: 10px;
-  border-radius: 10px;
-  font-family: sans-serif;
-  color: #fff;
+    &::-webkit-scrollbar-thumb {
+      background-color: #4a4a4a; /* Cor da parte deslizante da barra de rolagem */
+      border-radius: 5px; /* Borda arredondada */
+    }
 
-  h1{
-    font-size: 16px;
+    .title-desc,
+    .value-desc {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; /* Center items vertically */
+      padding: 20px 100px;
+      color: #fff;
+      font-family: sans-serif;
+      text-align: center;
+
+      #valor{
+        padding-right: 30px;
+      }
+    }
+
+    h1 {
+      font-weight: 500;
+      font-size: 16px;
+      margin: 0; /* Remove default margin */
+    }
+
+    .value-desc {
+      margin: 10px 90px;
+      background-color: #342f3e;
+      padding: 10px;
+      border-radius: 10px;
+      font-family: sans-serif;
+      color: #fff;
+    }
   }
 }

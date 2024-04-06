@@ -83,6 +83,10 @@ export class DashboardComponent implements OnInit {
     this.modalService.open(ModalAddComponent, { size: 'xl' })
   }
 
+  config() {
+    this.router.navigate(['/config']);
+  }
+
   logout() {
     this.authGuard.logout()
   }
