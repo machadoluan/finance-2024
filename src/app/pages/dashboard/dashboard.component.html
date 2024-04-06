@@ -6,26 +6,27 @@
     <div class="options">
       <div class="select home">
         <img src="../../../assets/Dashboard-Layout.svg" class="icon" alt="">
+        <span class="dessc">Home</span>
       </div>
       <div class="select add" (click)="button()">
         <img src="../../../assets/Add.svg" class="icon" alt="">
-
+        <span class="dessc">Adicionar</span>
       </div>
       <div class="select config">
         <img src="../../../assets/config.svg" class="icon" alt="">
-
+        <span class="dessc">Configurações</span>
       </div>
     </div>
     <div class="select sair" (click)="logout()" title="sair">
       <img src="../../../assets/Logout.svg" class="icon" alt="">
-
+      <span class="dessc">Sair</span>
     </div>
   </div>
 
   <main>
     <div class="header">
       <div class="titulo">
-        <h1>Olá, nome</h1>
+        <h1>Olá, {{this.nome}}</h1>
       </div>
 
       <div class="dark-mode">
@@ -38,27 +39,23 @@
       <div class="entrada">
         <h1>Entrada</h1>
         <img src="../../../assets/arrow-entrada.svg" class="type-icon" alt="">
-        <h2>R$ 00,00</h2>
+        <h2>{{this.entradaFormatado}}</h2>
       </div>
       <div class="saidas">
         <h1>Saída</h1>
         <img src="../../../assets/arrow-saidas.svg" class="type-icon" alt="">
-        <h2>R$ 00,00</h2>
+        <h2>{{this.saidaFormatado}}</h2>
       </div>
       <div class="total">
         <h1>Total</h1>
-        <h2>R$ 00,00</h2>
+        <h2>{{this.totalFromatado}}</h2>
       </div>
     </div>
 
     <div class="descricao">
 
       <div class="content">
-        <div class="filtro">
-          <div class="all">s</div>
-          <div class="f_entradas">s</div>
-          <div class="f_saidas">s</div>
-        </div>
+
         <div class="title-desc">
           <div class="desc">
             <h1>Descrição</h1>
@@ -76,8 +73,8 @@
           <div class="desc">
             <h1>{{ entrada.descricao }}</h1>
           </div>
-          <div class="valor">
-            <h1>R$: {{ entrada.valor }}</h1>
+          <div class="valor" >
+            <h1>{{ formatarParaReal(entrada.valor) }}</h1>
           </div>
           <div class="tipo">
             <img *ngIf="entrada.tipo === 'Entrada'" src="../../../assets/arrow-entrada.svg" style="width: 30px;" alt="">
@@ -90,7 +87,7 @@
             <h1>{{ saida.descricao }}</h1>
           </div>
           <div class="valor">
-            <h1>R$: {{ saida.valor }}</h1>
+            <h1>{{ formatarParaReal(saida.valor) }}</h1>
           </div>
           <div class="tipo">
             <img *ngIf="saida.tipo === 'Entrada'" src="../../../assets/arrow-entrada.svg" style="width: 30px;" alt="">

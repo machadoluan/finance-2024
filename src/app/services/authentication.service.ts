@@ -9,7 +9,8 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  private apiUrl = 'https://backend-api-orpin.vercel.app'; // Atualize com o endereço do seu servidor
+  // private apiUrl = 'http://localhost:3001';
+  private apiUrl = 'http://localhost:3001';
 
   constructor(private http: HttpClient) { }
 
@@ -32,4 +33,19 @@ export class AuthenticationService {
       })
     );
   }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  getUserFromToken(): any | null {
+    const token = this.getToken();
+    if (token) {
+      const tokenPayload = token.split('.')[1];
+      const decodedPayload = JSON.parse(atob(tokenPayload));
+      return decodedPayload;
+    }
+    return null;
+  }
+
 }

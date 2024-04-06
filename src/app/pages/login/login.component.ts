@@ -42,8 +42,6 @@ export class LoginComponent implements OnInit {
     if (!this.emailInvalid){
       this.authService.login(this.userEmail, this.senha).subscribe(
       (resposta) => {
-        // Manipular a resposta bem-sucedida aqui
-        console.log('Resposta do servidor:', resposta);
         this.router.navigate(['/dashboard']);
       },
       (erro) => {

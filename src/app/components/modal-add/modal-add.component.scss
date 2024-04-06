@@ -2,7 +2,7 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 50%; /* Você pode ajustar este valor conforme necessário */
+  width: 40%; /* Você pode ajustar este valor conforme necessário */
   height: 50%; /* Você pode ajustar este valor conforme necessário */
   background-color: #19161F;
   transform: translate(-50%, -50%);
@@ -32,6 +32,7 @@
       border-radius: 10px;
       color: white;
       font-size: 14px;
+      outline: none;
     }
 
     #valor{
