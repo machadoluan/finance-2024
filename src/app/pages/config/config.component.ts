@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthGuard } from '../../auth.guard';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalAddComponent } from '../../components/modal-add/modal-add.component';
@@ -17,6 +17,12 @@ import { CommonModule } from '@angular/common';
 export class ConfigComponent implements OnInit {
   entradas: { descricao: string, valor: string, tipo: string }[] = [];
   saidas: { descricao: string, valor: string, tipo: string }[] = [];
+  usuario: { nome: string, email: string, senha: string, data: string, id: number }[] = [];
+
+
+  perfilParaExcluir: any;
+
+  @ViewChild('confirmDeleteModal') confirmDeleteModal: any;
 
   expanded: string | null = null;
 
@@ -30,12 +36,18 @@ export class ConfigComponent implements OnInit {
 
   ngOnInit(): void {
     this.carregarDados()
+    this.carregarUsuarios()
   }
 
   formatarParaReal(numero) {
     return numero.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   }
 
+  carregarUsuarios(): void {
+    this.sharedDataService.atualizarUsuarios().then(() => {
+      this.usuario = this.sharedDataService.usuario;
+    });
+  }
   carregarDados(): void {
     this.sharedDataService.atualizarEntradas().then(() => {
       this.entradas = this.sharedDataService.entradas;
@@ -45,6 +57,18 @@ export class ConfigComponent implements OnInit {
       this.saidas = this.sharedDataService.saidas;
     });
   }
+
+  excluirPerfil(perfilId: number): void {
+    this.sharedDataService.excluirPerfil(perfilId)
+      .then(() => {
+        
+      })
+      .catch(error => {
+        // Tratamento de erro, se necessário
+      });
+  }
+
+
 
   toggleExpansion(card: string): void {
     this.expanded = this.expanded === card ? null : card;

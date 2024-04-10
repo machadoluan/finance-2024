@@ -8,9 +8,10 @@ import { DashboardComponent } from '../pages/dashboard/dashboard.component';
 export class SharedDataService {
   entradas: { descricao: string, valor: string, tipo: string }[] = [];
   saidas: { descricao: string, valor: string, tipo: string }[] = [];
+  usuario: { nome: string, email: string, senha: string, data: string, id: number }[] = [];
 
-  constructor(private http: HttpClient,  ) { }
-  
+  constructor(private http: HttpClient,) { }
+
   atualizarEntradas(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       this.http.get<any[]>('http://localhost:3001/entradas')
@@ -40,4 +41,41 @@ export class SharedDataService {
         });
     });
   }
+
+  atualizarUsuarios(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this.http.get<any[]>('http://localhost:3001/perfis')
+        .subscribe(data => {
+          // Formatando os dados conforme necessário
+          // Suponha que o formato dos dados seja semelhante aos das entradas e saídas
+          // Se necessário, ajuste conforme o formato real dos dados
+          // Exemplo:
+          this.usuario = data.map(usuario => ({
+            nome: usuario.nome,
+            email: usuario.email,
+            senha: usuario.senha,
+            data: usuario.data,
+            id: usuario.id
+          }));
+          resolve(); // Resolve a Promise quando os usuários são atualizados
+        });
+    });
+  }
+
+  excluirPerfil(perfilId: number): Promise<void> {
+    return this.http.delete<void>(`http://localhost:3001/perfis/${perfilId}`)
+      .toPromise()
+      .then(() => {
+        console.log('Perfil excluído com sucesso.');
+        // Atualiza a lista de usuários após a exclusão
+        return this.atualizarUsuarios();
+      })
+      .catch(error => {
+        console.error('Erro ao excluir perfil:', error);
+        throw error; // Lança o erro para tratamento no componente
+      });
+  }
+
+
+
 }

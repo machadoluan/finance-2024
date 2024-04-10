@@ -46,34 +46,15 @@
         </div>
         <div class="additional-info">
           <div class="perfil">
-            <div class="dados">
-              <span>Nome: Luan</span>
-              <span>email: luanmachadodaas.com</span>
-              <span>senha: 1234</span>
-              <span>Data: 04/04/2006</span>
+            <div class="dados" *ngFor="let usuario of sharedDataService.usuario">
+              <span>Nome: {{usuario.nome}}</span>
+              <span>Email: {{usuario.email}}</span>
+              <span>senha: {{usuario.senha}}</span>
+              <span>Data: {{usuario.data}}</span>
+              <span>Data: {{usuario.id}}</span>
               <div class="buttons">
                 <img src="../../../assets/edit.svg" alt="">
-                <img src="../../../assets/delete.svg" alt="">
-              </div>
-            </div>
-            <div class="dados">
-              <span>Nome: Luan</span>
-              <span>email: luanmachadodaas.com</span>
-              <span>senha: 1234</span>
-              <span>Data: 04/04/2006</span>
-              <div class="buttons">
-                <img src="../../../assets/edit.svg" alt="">
-                <img src="../../../assets/delete.svg" alt="">
-              </div>
-            </div>
-            <div class="dados">
-              <span>Nome: Luan</span>
-              <span>email: luanmachadodaas.com</span>
-              <span>senha: 1234</span>
-              <span>Data: 04/04/2006</span>
-              <div class="buttons">
-                <img src="../../../assets/edit.svg" alt="">
-                <img src="../../../assets/delete.svg" alt="">
+                <img src="../../../assets/delete.svg" alt="" (click)="excluirPerfil(usuario.id)">
               </div>
             </div>
           </div>
@@ -155,3 +136,5 @@
   </main>
 
 </div>
+
+
