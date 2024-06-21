@@ -3,12 +3,13 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SharedDataService } from '../../services/shared-data.service';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
 
 
 @Component({
   selector: 'app-modal-add',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, MatFormField, MatLabel],
   templateUrl: './modal-add.component.html',
   styleUrls: ['./modal-add.component.scss']
 })

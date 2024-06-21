@@ -4,8 +4,15 @@
   </div>
 
   <div class="inputs">
-    <input type="text" [(ngModel)]="descricao" name="descricao" id="descricao" placeholder="Descrição">
-    <input type="number" [(ngModel)]="valor" name="valor" id="valor" placeholder="Valor">
+    <mat-form-field appearance="outline">
+      <mat-label>Descrição</mat-label>
+      <input matInput [(ngModel)]="descricao">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Valor</mat-label>
+      <input matInput [(ngModel)]="valor" type="number">
+    </mat-form-field>
   </div>
 
   <div class="buttons">

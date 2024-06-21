@@ -1,0 +1,14 @@
+.forms{
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .input{
+        width: 200px;
+    }
+
+    .custom-fab{
+        background-color: rgb(41, 87, 164);
+    }
+}

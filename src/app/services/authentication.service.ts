@@ -34,6 +34,12 @@ export class AuthenticationService {
     );
   }
 
+  cadastro(nome: string, email: string, senha: string): Observable<any> {
+    const body = {nome, email, senha};
+
+    return this.http.post(`${this.apiUrl}/registro`, body)
+  }
+
   getToken(): string | null {
     return localStorage.getItem('token');
   }

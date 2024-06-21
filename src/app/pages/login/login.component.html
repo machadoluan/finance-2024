@@ -3,11 +3,13 @@
     <div class="inputs">
       <h1>Seja bem vindo, novamente</h1>
       <form [formGroup]="loginForm" (submit)="loginUser()">
+
         <div class="config-input">
-          <label for="email">E-mail</label>
-          <input type="email" [(ngModel)]="userEmail" name="email" id="email" formControlName="email" required=""
-            placeholder="Seu email">
-            <div *ngIf="loginForm.get('email')?.errors?.['required'] &&  loginForm.get('email')?.touched"
+          <mat-form-field appearance="outline">
+            <mat-label>Seu E-mail</mat-label>
+            <input type="email" [(ngModel)]="userEmail" name="email" id="email" formControlName="email" required="" matInput >
+          </mat-form-field>
+          <div *ngIf="loginForm.get('email')?.errors?.['required'] &&  loginForm.get('email')?.touched"
             class="error-input">
             Campo Obrigatório!
           </div>
@@ -15,21 +17,24 @@
         </div>
 
         <div class="config-input">
-          <label for="password">Senha</label>
-          <input type="password" [(ngModel)]="senha" name="password" id="password" formControlName="senha" required=""
-            placeholder="Sua senha">
+          <mat-form-field appearance="outline">
+            <mat-label>Sua senha</mat-label>
+            <input [type]="hide ? 'password' : 'text'" [(ngModel)]="senha" name="password" id="password" formControlName="senha" required=""
+           matInput>
+           <mat-icon matSuffix (click)="toggleHide()" style="cursor: pointer;">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </mat-form-field>
           <div *ngIf="loginForm.get('senha')?.errors?.['required'] &&  loginForm.get('senha')?.touched"
             class="error-input">
             Campo Obrigatório!
           </div>
+          <button type="submit" [ngClass]="{'disabled' : !loginForm.valid}" [disabled]="!loginForm.valid">Entrar</button>
         </div>
-
-        <button type="submit" [ngClass]="{'disabled' : !loginForm.valid}" [disabled]="!loginForm.valid">Entrar</button>
         <div class="error-invalid" *ngIf="credenciasInvalidas">E-mail ou senha invalida!</div>
+
+        <span style="padding-top: 50px; cursor: pointer;" (click)="openDialog()">Criar conta</span>
       </form>
     </div>
   </div>
-
   <div class="logo">
     <img src="../../../assets/logo.png" alt="">
   </div>

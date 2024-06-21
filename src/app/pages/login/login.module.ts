@@ -3,6 +3,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
 
 
 @NgModule({
@@ -12,7 +16,10 @@ import { CommonModule } from '@angular/common';
   imports: [
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule
   ],
 })
 export class LoginModule { }
