@@ -35,32 +35,6 @@
     </div>
 
     <div class="content">
-      <div class="card perfis" [class.expanded]="expanded === 'perfis'">
-        <div class="title" (click)="toggleExpansion('perfis')">
-          <div class="title-card">
-            <img src="../../../assets/user.svg" alt="">
-            <span>Gerenciar Usuarios</span>
-          </div>
-          <img src="../../../assets/arrow-drop-down-line.svg" class="icon down" alt="">
-          <img src="../../../assets/arrow-up-s-line.svg" class="icon up" alt="">
-        </div>
-        <div class="additional-info">
-          <div class="perfil">
-            <div class="dados" *ngFor="let usuario of sharedDataService.usuario">
-              <span>Nome: {{usuario.nome}}</span>
-              <span>Email: {{usuario.email}}</span>
-              <span>senha: {{usuario.senha}}</span>
-              <span>Data: {{usuario.data}}</span>
-              <span>Data: {{usuario.id}}</span>
-              <div class="buttons">
-                <img src="../../../assets/edit.svg" alt="">
-                <img src="../../../assets/delete.svg" alt="" (click)="excluirPerfil(usuario.id)">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="card entrada" [class.expanded]="expanded === 'entrada'" >
         <div class="title" (click)="toggleExpansion('entrada')">
           <div class="title-card">
@@ -81,7 +55,7 @@
               </div>
               <div class="buttons">
                 <img src="../../../assets/edit.svg" alt="">
-                <img src="../../../assets/delete.svg" alt="">
+                <img src="../../../assets/delete.svg" alt="" (click)="excluirEntrada(entrada.id)">
               </div>
             </div>
           </div>
@@ -108,7 +82,7 @@
               </div>
               <div class="buttons">
               <img src="../../../assets/edit.svg" alt="">
-              <img src="../../../assets/delete.svg" alt="">
+              <img src="../../../assets/delete.svg" alt="" (click)="excluirSaida(saida.id)">
             </div>
             </div>
 

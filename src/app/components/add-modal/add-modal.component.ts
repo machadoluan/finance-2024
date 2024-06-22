@@ -1,20 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { SharedDataService } from '../../services/shared-data.service';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogTitle,
+  MatDialogContent,
+} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-
+import { SharedDataService } from '../../services/shared-data.service';
+import { HttpClient } from '@angular/common/http';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 @Component({
-  selector: 'app-modal-add',
+  selector: 'app-add-modal',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule],
-  templateUrl: './modal-add.component.html',
-  styleUrls: ['./modal-add.component.scss']
+  imports: [
+    MatDialogTitle, 
+    MatDialogContent, 
+    MatFormFieldModule, 
+    MatInputModule, 
+    FormsModule,
+    NgxMaskDirective, 
+    NgxMaskPipe
+  ],
+  templateUrl: './add-modal.component.html',
+  styleUrl: './add-modal.component.scss'
 })
-export class ModalAddComponent implements OnInit {
+export class AddModalComponent {
   descricao: string = '';
   valor: number
 
@@ -22,16 +35,19 @@ export class ModalAddComponent implements OnInit {
   tipo: string = 'Entrada';
 
   constructor(
-    public activeModal: NgbActiveModal,
     private sharedDataService: SharedDataService,
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    public dialog: MatDialog
+  ) { 
+  }
 
   ngOnInit(): void { }
 
 
   cancelar() {
-    this.activeModal.close()
+    this.dialog.closeAll()
+    window.location.reload()
+
   }
 
   saida(): void {
@@ -41,8 +57,7 @@ export class ModalAddComponent implements OnInit {
         // Atualiza a lista de saídas no serviço compartilhado
         this.sharedDataService.atualizarSaidas();
       });
-    this.activeModal.close();
-    window.location.reload();
+
   }
 
   entrada(): void {
@@ -52,10 +67,6 @@ export class ModalAddComponent implements OnInit {
         // Atualiza a lista de entradas no serviço compartilhado
         this.sharedDataService.atualizarEntradas();
       });
-    this.activeModal.close();
-    window.location.reload();
+
   }
-
-
-
 }

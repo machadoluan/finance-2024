@@ -6,8 +6,8 @@ import { DashboardComponent } from '../pages/dashboard/dashboard.component';
   providedIn: 'root'
 })
 export class SharedDataService {
-  entradas: { descricao: string, valor: string, tipo: string }[] = [];
-  saidas: { descricao: string, valor: string, tipo: string }[] = [];
+  entradas: { descricao: string, valor: string, tipo: string, id: number}[] = [];
+  saidas: { descricao: string, valor: string, tipo: string, id: number }[] = [];
   usuario: { nome: string, email: string, senha: string, data: string, id: number }[] = [];
 
   constructor(private http: HttpClient,) { }
@@ -20,7 +20,8 @@ export class SharedDataService {
           this.entradas = data.map(entrada => ({
             descricao: entrada.descricao,
             valor: entrada.valor,
-            tipo: entrada.tipo
+            tipo: entrada.tipo,
+            id: entrada.id
           }));
           resolve(); // Resolve a Promise quando as entradas são atualizadas
         });
@@ -35,40 +36,35 @@ export class SharedDataService {
           this.saidas = data.map(saida => ({
             descricao: saida.descricao,
             valor: saida.valor,
-            tipo: saida.tipo
+            tipo: saida.tipo,
+            id: saida.id
           }));
           resolve(); // Resolve a Promise quando as saídas são atualizadas
         });
     });
   }
 
-  atualizarUsuarios(): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-      this.http.get<any[]>('http://localhost:3001/perfis')
-        .subscribe(data => {
-          // Formatando os dados conforme necessário
-          // Suponha que o formato dos dados seja semelhante aos das entradas e saídas
-          // Se necessário, ajuste conforme o formato real dos dados
-          // Exemplo:
-          this.usuario = data.map(usuario => ({
-            nome: usuario.nome,
-            email: usuario.email,
-            senha: usuario.senha,
-            data: usuario.data,
-            id: usuario.id
-          }));
-          resolve(); // Resolve a Promise quando os usuários são atualizados
-        });
-    });
-  }
-
-  excluirPerfil(perfilId: number): Promise<void> {
-    return this.http.delete<void>(`http://localhost:3001/perfis/${perfilId}`)
+  excluirEntrada(entradaId: number): Promise<void> {
+    return this.http.delete<void>(`http://localhost:3001/entradas/${entradaId}`)
       .toPromise()
       .then(() => {
-        console.log('Perfil excluído com sucesso.');
+        console.log('Entrada excluida com sucesso.');
         // Atualiza a lista de usuários após a exclusão
-        return this.atualizarUsuarios();
+        return this.atualizarEntradas();
+      })
+      .catch(error => {
+        console.error('Erro ao excluir perfil:', error);
+        throw error; // Lança o erro para tratamento no componente
+      });
+  }
+
+  excluirSaida(saidaId: number): Promise<void> {
+    return this.http.delete<void>(`http://localhost:3001/saidas/${saidaId}`)
+      .toPromise()
+      .then(() => {
+        console.log('Saida excluida com sucesso.');
+        // Atualiza a lista de usuários após a exclusão
+        return this.atualizarSaidas();
       })
       .catch(error => {
         console.error('Erro ao excluir perfil:', error);

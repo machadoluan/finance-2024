@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>ADICIONAR</h2>
+<mat-dialog-content class="custom-dialog">
+  <div class="inputs">
+
+
+    <mat-form-field appearance="outline" class="input">
+      <mat-label>Descrição</mat-label>
+      <input matInput [(ngModel)]="descricao">
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" >
+      <mat-label>Valor</mat-label>
+      <input matInput [(ngModel)]="valor" type="text" mask="separator.2" prefix="R$ " thousandSeparator="." decimalMarker=",">
+    </mat-form-field>
+  </div>
+
+  <div class="buttons">
+    <button id="cancelar" (click)="cancelar()">Cancelar</button>
+    <button id="saida" (click)="saida()">Saida</button>
+    <button id="entrada" (click)="entrada()">Entrada</button>
+  </div>
+</mat-dialog-content>

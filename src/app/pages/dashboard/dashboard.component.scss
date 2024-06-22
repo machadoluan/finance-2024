@@ -25,10 +25,6 @@
   transition: all 500ms ease-in-out;
 }
 
-.slidebar:hover {
-  width: 17%;
-}
-
 .logo img {
   width: 80px;
 }
@@ -58,13 +54,6 @@
   border-radius: 10px;
 }
 
-.slidebar:hover .select .dessc {
-  display: block;
-  color: white;
-}
-.slidebar:hover .select  {
-  justify-content: start;
-}
 
 .dessc {
   display: none;

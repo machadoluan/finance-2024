@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthGuard } from '../../auth.guard';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalAddComponent } from '../../components/modal-add/modal-add.component';
 import { Router } from '@angular/router';
 import { SharedDataService } from '../../services/shared-data.service';
 import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { AddModalComponent } from '../../components/add-modal/add-modal.component';
 
 
 @Component({
@@ -15,8 +16,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './config.component.scss'
 })
 export class ConfigComponent implements OnInit {
-  entradas: { descricao: string, valor: string, tipo: string }[] = [];
-  saidas: { descricao: string, valor: string, tipo: string }[] = [];
+  entradas: {  descricao: string, valor: string, tipo: string, id: number}[] = [];
+  saidas: { descricao: string, valor: string, tipo: string, id: number }[] = [];
   usuario: { nome: string, email: string, senha: string, data: string, id: number }[] = [];
 
 
@@ -28,26 +29,21 @@ export class ConfigComponent implements OnInit {
 
   constructor(
     private authGuard: AuthGuard,
-    private modalService: NgbModal,
+    private dialog: MatDialog,
     private router: Router,
     public sharedDataService: SharedDataService,
+    
 
   ) { }
 
   ngOnInit(): void {
     this.carregarDados()
-    this.carregarUsuarios()
   }
 
   formatarParaReal(numero) {
     return numero.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   }
 
-  carregarUsuarios(): void {
-    this.sharedDataService.atualizarUsuarios().then(() => {
-      this.usuario = this.sharedDataService.usuario;
-    });
-  }
   carregarDados(): void {
     this.sharedDataService.atualizarEntradas().then(() => {
       this.entradas = this.sharedDataService.entradas;
@@ -58,13 +54,24 @@ export class ConfigComponent implements OnInit {
     });
   }
 
-  excluirPerfil(perfilId: number): void {
-    this.sharedDataService.excluirPerfil(perfilId)
+  excluirEntrada(entradaId: number): void {
+    this.sharedDataService.excluirEntrada(entradaId)
       .then(() => {
-        
+        alert("Entrada N°: " + entradaId + " foi excluida!")
       })
       .catch(error => {
-        // Tratamento de erro, se necessário
+        alert("Erro ao excluir a entrada N°: " + entradaId)
+
+      });
+  }
+
+  excluirSaida(saidaId: number): void {
+    this.sharedDataService.excluirSaida(saidaId)
+      .then(() => {
+        alert("Saida N°: " + saidaId + " foi excluida!")
+      })
+      .catch(error => {
+        alert("Erro ao excluir a saida N°: " + saidaId)
       });
   }
 
@@ -77,7 +84,7 @@ export class ConfigComponent implements OnInit {
   }
 
   button() {
-    this.modalService.open(ModalAddComponent, { size: 'xl' })
+    this.dialog.open(AddModalComponent)
   }
 
   home() {

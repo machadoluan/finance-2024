@@ -6,6 +6,9 @@ import { AuthGuard } from '../../auth.guard';
 import { SharedDataService } from '../../services/shared-data.service';
 import { CommonModule } from '@angular/common';
 import { AuthenticationService } from '../../services/authentication.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddModalComponent } from '../../components/add-modal/add-modal.component';
+
 
 
 @Component({
@@ -32,7 +35,8 @@ export class DashboardComponent implements OnInit {
     private modalService: NgbModal,
     private authGuard: AuthGuard,
     public sharedDataService: SharedDataService,
-    private authentication: AuthenticationService
+    private authentication: AuthenticationService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -80,7 +84,7 @@ export class DashboardComponent implements OnInit {
   }
 
   button() {
-    this.modalService.open(ModalAddComponent, { size: 'xl' })
+    this.dialog.open(AddModalComponent  )
   }
 
   config() {
